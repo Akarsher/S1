@@ -8,7 +8,7 @@ int find(int i)
   return parent[i]; 
 } 
               
-int uni(int i,int j)
+int uni(int i,int j) 
 {
   if(i!=j)
   {  
