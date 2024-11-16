@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #define SIZE 5  
-// Define the maximum size of the queue
+// maximum size of the queue
 
 int queue[SIZE];  
 int front = -1;   
@@ -13,7 +13,7 @@ int isFull() {
     return rear == SIZE - 1;
 }
 
-// Function to check if the queue is empty
+// Function to check if the queue is empty,the second case is front becomes greater than rear after last dequeue
 int isEmpty() {
     return front == -1 || front > rear;
 }
@@ -30,7 +30,7 @@ void Enqueue(int ITEM) {
     }
     
     rear++;  // Increment the rear index
-    queue[rear] = ITEM;
+    queue[rear] = ITEM; //user given item places to the rear of queue (after the increment)
     printf("%d enqueued to queue\n", ITEM);
 }
 
@@ -41,7 +41,7 @@ int Dequeue() {
         return -1;  // Return -1 to indicate queue underflow
     }
 
-    int ITEM = queue[front];
+    int ITEM = queue[front]; //front item moves to the item
     front++;  // Increment the front index
     return ITEM;
 }
@@ -63,7 +63,7 @@ int main() {
     Enqueue(40);
     Enqueue(50);
     
-    // Attempt to enqueue when the queue is full
+    // inserting element after full
     Enqueue(60);
 
     // Peek the front element
