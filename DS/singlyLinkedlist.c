@@ -78,7 +78,6 @@ struct node *ptr;
 	}		
 	}
 
-
 void insertSpecific(){
 int item;
 int pos,i;
@@ -147,9 +146,6 @@ int search(int item) {
     return -1; 
 }
 
-
-
-
 void display(){
 
 	struct node *ptr;
@@ -171,8 +167,7 @@ void display(){
 
 }
 
-
-  int main(){
+ int main(){
  int choice;
  int item;
  while(1){
@@ -208,7 +203,5 @@ void display(){
      default : printf("Invalid choice!");	
      		
  }
- 
  }
-
 	}
