@@ -110,10 +110,127 @@ void countNew() {
     }
 }
 
+void searchItem(int item){
+    struct node *ptr=head;
+    int nodeCount=1;
+
+    if(ptr==NULL){
+        printf("Not exists");
+    }
+    else{
+        while(ptr->next!=NULL){
+
+        if(ptr->data==item){
+            printf("\nItem is found at : %d",nodeCount);
+        }    
+
+        ptr=ptr->next;
+            nodeCount++;    
+
+        
+    }
+    }
+}
+
+void insertBeg(){
+    int item;
+    struct node *ptr;
+    ptr=(struct node*)malloc(sizeof(struct node));
+    printf("\nEnter the item to insertBeg:");
+    scanf("%d",&item);
+    
+    ptr->data=item;
+    ptr->prev=NULL;
+    ptr->next=head;
+    
+    if(head!=NULL){
+        head->prev=ptr;
+    }
+    
+    head=ptr;
+    printf("Linked L. after insertBeg:\t");
+    display();
+    
+}
+
+void insertEnd(){
+    
+    int data;
+    struct node *ptr,*temp;
+    temp=(struct node*)malloc(sizeof(struct node));
+    printf("\nEnter the item to insertEnd:");
+    scanf("%d",&data);
+    temp->data=data;
+    temp->next=NULL;
+    
+    ptr=head;
+    
+    if(ptr==NULL){
+        temp->prev=NULL;
+        head=temp;
+    }
+    else{
+        
+        while(ptr->next!=NULL){
+        ptr=ptr->next;
+    }
+    ptr->next=temp;
+    temp->prev=ptr;
+    printf("LL after insertEnd:\t");
+    display();
+    }
+}
+
+void deleteBeg(){
+    struct node *temp;
+    
+    if(head==NULL){
+        printf("Not possible");
+    }
+    
+    temp=head;
+    head=head->next;
+    if(head!=NULL){
+        head->prev=NULL;
+    }
+    free(temp);
+    printf("\nAfter first node deletion:\t");
+    display();
+}
+
+void deleteEnd(){
+    struct node *temp;
+    
+    temp=head;
+    
+    if(temp==NULL){
+        printf("Already empty");
+    }
+    else{
+        while(temp->next!=NULL){
+            temp=temp->next;
+        }
+        if(temp->prev!=NULL){
+            temp->prev->next=NULL;
+        }
+        else{
+            head=NULL;
+        }
+        free(temp);
+        printf("\nAfter last node deletion:\t");
+        display();
+    }
+}
+
 int main() {
-    create();
+    create();  //create a list containing 20
     display();
     countNew();
     reverseDisplay();
+    searchItem(20);  //20 is passed to function
     return 0;
+    insertBeg();
+    insertEnd();
+    deleteBeg();
+    deleteEnd();
 }
